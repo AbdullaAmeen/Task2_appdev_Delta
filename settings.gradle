@@ -1,0 +1,2 @@
+rootProject.name = "Pong_Task2"
+include ':app'
