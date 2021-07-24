@@ -14,14 +14,28 @@ public class GameThread extends Thread {
 
     private GameView view;
     private int state = STATE_START;
-    private int score = 0;
+    private int scorePlayer = 0;
+
+
+
+    private int scoreComputer = 0;
+
     Canvas c = null;
-    public int getScore() {
-        return score;
+
+    public int getScoreComputer() {
+        return scoreComputer;
     }
 
-    public void incrementScore() {
-        this.score+=2;
+    public void incrementScoreComputer() {
+        this.scoreComputer+=1;
+    }
+
+    public int getScorePlayer() {
+        return scorePlayer;
+    }
+
+    public void incrementScorePlayer() {
+        this.scorePlayer+=1;
     }
 
     public GameThread(GameView view){
@@ -48,14 +62,18 @@ public class GameThread extends Thread {
             int timeRemaining = 3;
             @Override
             public void onTick(long millisUntilFinished) {
-
+                try{
                 c = view.getHolder().lockCanvas();
                 synchronized (view.getHolder()) {
                     timeRemaining--;
                     view.startDraw(c, timeRemaining );
 
                 }
-                view.getHolder().unlockCanvasAndPost(c);
+                }
+                finally {
+                    if(c != null)
+                        view.getHolder().unlockCanvasAndPost(c);
+                }
             }
 
             @Override

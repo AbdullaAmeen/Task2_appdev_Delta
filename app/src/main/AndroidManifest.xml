@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.pong_task2">
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -10,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pong_Task2">
 
-        <activity android:name=".NormalMode"></activity>
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".NormalMode" android:screenOrientation="portrait"></activity>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
